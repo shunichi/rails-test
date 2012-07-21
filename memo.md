@@ -119,6 +119,18 @@ Mebay::Application.routes.draw do
 end
 ```
 
+コントローラー(app/controllers/ads_controller.rb)のコードを修正。
+
+```ruby
+class AdsController < ApplicationController
+  def show
+    @ad = Ad.find(params[:id])
+  end
+end
+```
+
+ビュー(app/views/ads/show.html.erb)に <%= @ad.name %> などを追加。
+
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html
 * http://nextjewel.blogspot.jp/search/label/Head%20First%20Rails%20Rails3%E5%AF%BE%E5%BF%9C%E3%83%A1%E3%83%A2

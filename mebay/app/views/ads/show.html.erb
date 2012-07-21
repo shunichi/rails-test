@@ -1,22 +1,25 @@
 ﻿<html>
 <head>
-  <title> </title>
+  <title><%= @ad.name %></title>
 </head>
 <body>
 <p>
-  <b>Name:</b>
+  <b>Name:</b><%= @ad.name %>
 </p>
 <p>
-  <b>Description:</b>
+  <b>Description:</b><%= @ad.description %>
 </p>
 <p>
-  <b>Price:</b>
+  <b>Price:</b><%= @ad.price %>
 </p>
 <p>
-  <b>Seller Id:</b>
+  <b>Seller Id:</b><%= @ad.seller_id %>
 </p>
 <p>
-  <b>Email:</b>
+  <b>Email:</b><%= @ad.email %>
+</p>
+<p>
+  <img src="<%= @ad.img_url %>">
 </p>
 </body>
 </html>
