@@ -40,15 +40,48 @@ $ rails server        # 開発用Webサーバーの起動
 rails generate scaffold ticket name:string seat_id_seq:string address:text price_paid:decimal email_address:string
 ```
 
-最初 rails new *ticket* で rails generate scaffold *ticket* と両方 ticket としていたら怒られたが、 rails new tickets でやりなおした。
+最初 rails new *ticket* で rails generate scaffold *ticket* と両方 ticket としていたら怒られたが、 rails new tickets でやりなおしたらできた。
 
-データベースにテーブルを作る。
+db/migrate/20120721110636_create_tickets.rb ができた。
+
+次は、データベースにテーブルを作る。
 
 ```
 rake db:migrate
 ```
 
 http://localhost:3000/tickets を見るとチケットリストが見えるが、まだ何も登録されていないので、 New Ticket で作ってみたりしてみるといい。
+
+電話番号を追加。
+
+```
+$ rails generate migration AddPhoneToTickets phone:string
+      invoke  active_record
+      create    db/migrate/20120721114131_add_phone_to_tickets.rb
+```
+
+db/migrate/20120721114131_add_phone_to_tickets.rb ができた。
+
+```
+$ rake db:migrate
+```
+
+ブラウザから新しいレコードを追加しようとしたらエラーが出た。
+
+```
+ActiveModel::MassAssignmentSecurity::Error in TicketsController#create
+
+Can't mass-assign protected attributes: phone
+```
+
+モデルのコードに :phone が追加されていないからだろうか？
+
+```
+class Ticket < ActiveRecord::Base
+  attr_accessible :address, :email_address, :name, :price_paid, :seat_id_seq
+end
+```
+
 
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html
