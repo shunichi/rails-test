@@ -1,5 +1,8 @@
 ﻿
 Head First Rails を見ながらやってみる。
+本では Rails 2.3 らしいが、今回は Rails 3.2 を使うのでいろいろ違うところがある。
+
+
 
 # もろもろインストール
 
@@ -130,6 +133,89 @@ end
 ```
 
 ビュー(app/views/ads/show.html.erb)に <%= @ad.name %> などを追加。
+
+本だとビューに htmlタグから書いているが、 Rails 3.2 では app/views/layouts/application.html.erb が最初から入っているので、body タグの内側だけを書かないといけないみたい。
+
+インデックスページ作成のために、コントローラ(app/controllers/ads_controller.rb)を変更しビューを追加。
+
+```ruby
+class AdsController < ApplicationController
+  def show
+    @ad = Ad.find(params[:id])
+  end
+  # 追加した関数
+  def index
+    @ads = Ad.all
+  end
+end
+```
+
+```html
+<h1>All Ads</h1>
+<ul>
+<% @ads.each do |ad| %>
+  <li><a href="/ads/<%= ad.id %>"><%= ad.name %></a>
+<% end %>
+</ul>
+```
+
+# 違うところまとめ
+
+## アプリケーションを作る
+
+```
+Rails 2.3
+$ rails アプリケーション名
+
+Rails 3.2
+$ rails new アプリケーション名
+```
+
+## サーバーを起動
+
+```
+Rails 2.3
+$ ruby script/server
+
+Rails 3.2
+$ rails server
+```
+
+## scaffold
+
+```
+Rails 2.3
+$ ruby script/generate scaffold モデル名 フィールド名:型 フィールド名:型 ...
+
+Rails 3.2
+$ rails generate scaffold モデル名 フィールド名:型 フィールド名:型 ...
+```
+
+## migration
+
+```
+Rails 2.3
+$ ruby script/generate migration Add???To???? フィールド名:型
+
+Rails 3.2
+$ rails generate migration Add???To???? フィールド名:型
+```
+
+## routes.rb
+
+Rails 2.3
+```ruby
+ActionController::Routeing::Routes.draw do |map|
+  map.connect '/ads/:id', :controller=>'ads', :action=>'show'
+end
+```
+
+Rails 3.2
+```ruby
+Mebay::Application.routes.draw do
+  match 'ads/:id' => 'ads#show'
+end
+```
 
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html
