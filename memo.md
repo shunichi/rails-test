@@ -88,6 +88,13 @@ end
 $ rails g scaffold event artist description:text price_low:decimal price_high:decimal event_date:date
 $ rake db:migrate
 ```
+## ２章
+
+MeBayのアプリケーションを作る。
+
+```
+rails new mebay
+```
 
 
 # 参考
