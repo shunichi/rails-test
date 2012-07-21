@@ -96,6 +96,28 @@ MeBayのアプリケーションを作る。
 rails new mebay
 ```
 
+モデルを作る。
+
+```
+$ rails g model ad name description:text price:decimal seller_id:integer email img_url
+$ rake db:migrate
+```
+
+コントローラを作る。
+
+```
+$ rails g controller ads
+```
+
+ビュー(app/views/ads/show.html.erb)を作る。
+
+ルート(config/routes.rb)を設定する。
+
+```ruby
+Mebay::Application.routes.draw do
+  match 'ads/:id' => 'ads#show'
+end
+```
 
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html

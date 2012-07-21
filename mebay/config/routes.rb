@@ -1,4 +1,7 @@
 Mebay::Application.routes.draw do
+
+  match 'ads/:id' => 'ads#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
