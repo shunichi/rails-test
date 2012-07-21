@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Artist:</b>
+  <%= @event.artist %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @event.description %>
+</p>
+
+<p>
+  <b>Prices From:</b>
+  <%= @event.price_low %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @event.price_high %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @event.event_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

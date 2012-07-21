@@ -74,12 +74,19 @@ ActiveModel::MassAssignmentSecurity::Error in TicketsController#create
 Can't mass-assign protected attributes: phone
 ```
 
-モデルのコードに :phone が追加されていないからだろうか？
+モデルのコード(app/models/ticket.rb)に :phone が追加されていないからのようだ。
+
+```ruby
+class Ticket < ActiveRecord::Base
+  attr_accessible :address, :email_address, :name, :price_paid, :seat_id_seq :phone
+end
+```
+
+新しいテーブルを作る。
 
 ```
-class Ticket < ActiveRecord::Base
-  attr_accessible :address, :email_address, :name, :price_paid, :seat_id_seq
-end
+$ rails g scaffold event artist description:text price_low:decimal price_high:decimal event_date:date
+$ rake db:migrate
 ```
 
 
