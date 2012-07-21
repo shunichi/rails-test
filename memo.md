@@ -1,0 +1,47 @@
+﻿
+Head First Rails を見ながらやってみる。
+
+# もろもろインストール
+
+* RubyInstaller で ruby 1.9.3 をインストール (http://rubyinstaller.org/downloads/)
+* DevKit もインストール (http://rubyinstaller.org/downloads/)
+* gem install rails
+* gem install sqlite3
+* gem udpate --system (rails new で失敗するので)
+
+## DevKit のインストール手順
+
+DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe を実行して、 C:\RubyDevKit など適当なディレクトリに展開する。
+
+```
+$ cd C:\RubyDevKit
+$ ruby dk.rb init
+```
+
+生成された config.yml に ruby のインストールパスがあればOK
+
+```
+$ ruby dk.rb install
+```
+
+## １章
+
+```
+$ rails new tickets   # 基本ファイル群の生成
+$ cd tickets
+$ rails server        # 開発用Webサーバーの起動
+```
+
+ブラウザで http://localhost:3000 につないでみると Welcome ページが見える。
+
+```
+rails generate scaffold ticket name:string seat_id_seq:string address:text price_paid:decimal email_address:string
+```
+
+最初 rails new *ticket* で rails generate scaffold *ticket* と両方 ticket としていたら怒られたが、 rails new tickets でやりなおした。
+
+# 参考
+* http://railsapps.github.com/rails-heroku-tutorial.html
+* http://nextjewel.blogspot.jp/search/label/Head%20First%20Rails%20Rails3%E5%AF%BE%E5%BF%9C%E3%83%A1%E3%83%A2
+* http://blog.be-open.net/ruby_on_rails/try-head-first-rails/
+* http://d.hatena.ne.jp/iishun/20120423/1335200728 のコメント
