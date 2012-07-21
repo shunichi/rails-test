@@ -136,7 +136,7 @@ end
 
 本だとビューに htmlタグから書いているが、 Rails 3.2 では app/views/layouts/application.html.erb が最初から入っているので、body タグの内側だけを書かないといけないみたい。
 
-インデックスページ作成のために、コントローラ(app/controllers/ads_controller.rb)を変更しビューを追加。
+インデックスページ作成のために、コントローラ(app/controllers/ads_controller.rb)を変更しビュー(app/views/ads/index.html.erb)を追加。
 
 ```ruby
 class AdsController < ApplicationController
