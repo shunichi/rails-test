@@ -34,11 +34,21 @@ $ rails server        # 開発用Webサーバーの起動
 
 ブラウザで http://localhost:3000 につないでみると Welcome ページが見える。
 
+チケットを扱うための土台(scaffold)を作る。
+
 ```
 rails generate scaffold ticket name:string seat_id_seq:string address:text price_paid:decimal email_address:string
 ```
 
 最初 rails new *ticket* で rails generate scaffold *ticket* と両方 ticket としていたら怒られたが、 rails new tickets でやりなおした。
+
+データベースにテーブルを作る。
+
+```
+rake db:migrate
+```
+
+http://localhost:3000/tickets を見るとチケットリストが見えるが、まだ何も登録されていないので、 New Ticket で作ってみたりしてみるといい。
 
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html
