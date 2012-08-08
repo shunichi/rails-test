@@ -217,6 +217,20 @@ Mebay::Application.routes.draw do
 end
 ```
 
+## 静的コンテンツの置き場
+
+```
+Rails 2.3
+  public/images
+  public/javascripts
+  public/stylesheets
+
+Rails 3.2
+  app/assets/images
+  app/assets/javascripts
+  app/assets/stylesheets
+```
+
 # 参考
 * http://railsapps.github.com/rails-heroku-tutorial.html
 * http://nextjewel.blogspot.jp/search/label/Head%20First%20Rails%20Rails3%E5%AF%BE%E5%BF%9C%E3%83%A1%E3%83%A2
